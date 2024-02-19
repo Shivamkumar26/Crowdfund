@@ -19,10 +19,10 @@ contract RapidFund {
     uint256 public currentNumberOfCampaigns = 0;
 
     function createCampaign(address _owner, string memory _title, string memory _description, uint256 _target, uint256 _deadline, string memory _imageUrl) public returns (uint256) {
-        Campaign storget campaign = campaigns[currentNumberOfCampaigns];
+        Campaign storage campaign = campaigns[currentNumberOfCampaigns];
 
         //kind of check to see if everything is fine?
-        require(campaign.deadline < block.timepstamp, "Enter a valid deadline.");
+        require(campaign.deadline < block.timestamp, "Enter a valid deadline.");
 
         campaign.owner = _owner;
         campaign.title = _title;
