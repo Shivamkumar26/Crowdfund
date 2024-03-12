@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Profile = () => {
+const Profile = ({ isDarkMode, toggleDarkMode }) => {
   return (
-    <div>Profile</div>
+    <div className={`${isDarkMode ? 'bg-[#09191b]' : 'bg-[#e5f8f9]'}`}>Profile</div>
   )
 }
 

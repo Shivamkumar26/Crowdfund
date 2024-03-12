@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CreateCampaign = () => {
+const CreateCampaign = ({ isDarkMode, toggleDarkMode }) => {
   return (
-    <div>CreateCampaign</div>
+    <div className={`${isDarkMode ? 'bg-[#09191b]' : 'bg-[#e5f8f9]'}`}>CreateCampaign</div>
   )
 }
 
