@@ -13,7 +13,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   // const { connect, address } = useStateContext();
 
-  const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
+  const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick, setToggleDrawer }) => (
     <div
       className={`w-[48px] h-[48px] rounded-[10px]
        ${isActive === name ? isDarkMode ? 'bg-[#2c2f32]' : 
@@ -34,7 +34,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     isDarkMode ? 'bg-[#1c1c24]' : 'bg-[#f2fbfc]'
   } rounded-[100px]`}>
 
-        <input type="text" placeholder="Search for campaigns" className={`flex w-full font-epilogue font-normal text-[14px] placeholder:text-text-white bg-transparent outline-none`} />
+        <input type="text" placeholder="Search for campaigns" className={`flex w-full font-epilogue font-normal text-[14px] placeholder:text ${isDarkMode ? 'text-[#c3c8e8]' : 'text-[#4c548c]'} bg-transparent outline-none`} />
         
         <div className="w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer">
           <img src={search} alt="search" className="w-[15px] h-[15px] object-contain"/>
@@ -48,6 +48,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           styles={'bg-[#8c6dfd]'}
           handleClick={() => {
            navigate('create-campaign')
+           setToggleDrawer(false);
           }}
         />
 
@@ -101,9 +102,14 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               styles={ 'bg-[#8c6dfd]'}
               handleClick={() => {
                navigate('create-campaign')
+               setToggleDrawer(false);
               }}
             />
-            <Icon styles={`{transition: 'background-color 0.3s ease'} shadow-secondary`} imgUrl={sun} isActive={isActive} handleClick={toggleDarkMode} />
+            <Icon styles={`{transition: 'background-color 0.3s ease'} shadow-secondary`} imgUrl={sun} isActive={isActive} handleClick={() => {
+              toggleDarkMode(!isDarkMode);
+              setToggleDrawer(false);
+            }}  
+           />
             </div>
           </div>
         </div>
